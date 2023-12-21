@@ -31,6 +31,8 @@
             this.turnLabel = new System.Windows.Forms.Label();
             this.buttonLabel = new System.Windows.Forms.Label();
             this.winLabel = new System.Windows.Forms.Label();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.winCounterLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // turnLabel
@@ -59,12 +61,33 @@
             this.winLabel.Size = new System.Drawing.Size(0, 13);
             this.winLabel.TabIndex = 2;
             // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(11, 40);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(76, 25);
+            this.resetButton.TabIndex = 3;
+            this.resetButton.Text = "RESET";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
+            // winCounterLabel
+            // 
+            this.winCounterLabel.AutoSize = true;
+            this.winCounterLabel.Location = new System.Drawing.Point(104, 46);
+            this.winCounterLabel.Name = "winCounterLabel";
+            this.winCounterLabel.Size = new System.Drawing.Size(61, 13);
+            this.winCounterLabel.TabIndex = 4;
+            this.winCounterLabel.Text = "O - X : 0 - 0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(193, 228);
+            this.ClientSize = new System.Drawing.Size(193, 245);
+            this.Controls.Add(this.winCounterLabel);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.winLabel);
             this.Controls.Add(this.buttonLabel);
             this.Controls.Add(this.turnLabel);
@@ -83,8 +106,12 @@
         private System.Windows.Forms.Label buttonLabel;
         int gridWidth = 3;
         int gridHeight = 3;
+        int oWins = 0;
+        int xWins = 0;
         System.Windows.Forms.Button[,] buttonGrid = new System.Windows.Forms.Button[3, 3];
         private System.Windows.Forms.Label winLabel;
+        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Label winCounterLabel;
     }
 }
 

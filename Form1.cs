@@ -19,7 +19,7 @@ namespace noughtsAndCrossesForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            GenerateGrid(ref this.buttonGrid, this.gridWidth, this.gridHeight);
+            GenerateGrid(ref buttonGrid, gridWidth, gridHeight);
         }
 
         public void GenerateGrid(ref Button[,] buttons, int width, int height)
@@ -33,7 +33,7 @@ namespace noughtsAndCrossesForms
                         Name = $"({i},{j})",
                         Width = 50,
                         Height = 50,
-                        Location = new Point(i * 55 + 16, j * 55 + 45),
+                        Location = new Point(i * 55 + 16, j * 55 + 70),
                         BackColor = Color.White,
                         Size = new Size(50, 50),
                         Visible = true
@@ -66,10 +66,14 @@ namespace noughtsAndCrossesForms
                 if (turnLabel.Text == "Turn: Noughts")
                 {
                     winLabel.Text = "CROSSES WIN";
+                    xWins++;
+                    winCounterLabel.Text = $"O - X : {oWins} - {xWins}";
                 }
                 else if (turnLabel.Text == "Turn: Crosses")
                 {
                     winLabel.Text = "NOUGHTS WIN";
+                    oWins++;
+                    winCounterLabel.Text = $"O - X : {oWins} - {xWins}";
                 }
             }
             if (WinCheck(buttonGrid) == 2)
@@ -100,6 +104,20 @@ namespace noughtsAndCrossesForms
                 return 2;
             }
             return 0;
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    buttonGrid[i, j].Text = "";
+                    turnLabel.Text = "Turn: Noughts";
+                    winLabel.Text = "";
+                    buttonLabel.Text = "Prior Move: N/A";
+                }
+            }
         }
     }
 }
